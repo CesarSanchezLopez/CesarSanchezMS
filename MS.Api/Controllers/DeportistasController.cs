@@ -34,5 +34,14 @@ namespace MS.Api.Controllers
         {
             return await _Repo.DeportistasModalidad();
         }
+
+        [HttpPost("Insertar")]
+        [Route("api/Insertar")]
+        public async Task<int> InsertarDeportistaModalidad(int idDeportista, int idModalidad, int valor)
+        {
+            return await _Repo.InsertarDeportistaModalidad( idDeportista,  idModalidad,  valor);
+        }
+
+        
     }
 }

@@ -7,5 +7,6 @@ namespace MS.Api.Interfaces
 
         Task<List<Deportista>> Deportistas();
         Task<List<Deportista>> DeportistasModalidad();
+        Task<int> InsertarDeportistaModalidad(int idDeportista, int idModalidad, int valor);
     }
 }

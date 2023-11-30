@@ -74,8 +74,9 @@ namespace MS.Infra.Repositories
 
             using (var command = new SqlCommand("SP_DeportistasModalidad", connection))
             {
+               
                 command.CommandType = CommandType.StoredProcedure;
-
+ 
                 connection.Open();
 
 
@@ -106,6 +107,28 @@ namespace MS.Infra.Repositories
             }
 
             return await Task.FromResult(estados);
+        }
+
+        public async Task<int> InsertarDeportistaModalidad(int idDeportista, int idModalidad, int valor)
+        {
+
+
+            int salida;
+
+            using var connection = _context.CreateConnection();
+
+            using (var command = new SqlCommand("SP_InsertarDeportistaModalidad", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@PIdDeportista", SqlDbType.Int).Value = idDeportista;
+                command.Parameters.Add("@PIdModalidad", SqlDbType.Int).Value = idModalidad;
+                command.Parameters.Add("@PValor", SqlDbType.Int).Value = valor;
+                connection.Open();
+
+                 salida = command.ExecuteNonQuery();
+            }
+
+            return salida;
         }
     }
 }
