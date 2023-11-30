@@ -2,6 +2,7 @@
 using MS.Core.Models;
 using MS.Core.Interfaces;
 using MS.Api.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MS.Api.Controllers
 {
@@ -19,6 +20,7 @@ namespace MS.Api.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpGet("Deportistas")]
         [Route("api/Deportistas")]
         public async Task<List<Deportista>> Deportistas()
